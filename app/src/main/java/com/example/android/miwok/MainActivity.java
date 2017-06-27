@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        // Set the content of the activity to use the principal layout file
+        // LA ACTIVIDAD PRINCIPAL USA EL LAYOUT PRINCIPAL , ACA SE PONE LOS SET ON CLICK LISTENER DE TODOS LOS OTROS LAYOUTS
         setContentView(R.layout.principal);
         numbers = (TextView) findViewById(R.id.numbers);
         family = (TextView)findViewById(R.id.family) ;

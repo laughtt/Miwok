@@ -8,7 +8,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class Phrases extends AppCompatActivity {
-
+    /*LO MISMO QUE EL COLORS */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,7 @@ public class Phrases extends AppCompatActivity {
 
 
         palabra.add( new Word ("Wabalabadubdubbb!!" , "Wabalabadubdubbb!!" , mediaPlayer)) ;
-        palabra.add( new Word ("Wabalabadubdubbb!!" , "Wabalabadubdubbb!!" , mediaPlayer1)) ;
+        palabra.add( new Word ("Epic Music" , "Epic Music" , mediaPlayer1)) ;
 
 
 

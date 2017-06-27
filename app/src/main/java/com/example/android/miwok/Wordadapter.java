@@ -20,44 +20,43 @@ import java.util.ArrayList;
 /**
  * Created by jose on 11/14/2016.
  */
-
+    /*ESTE ES EL ADAPTADOR , EXTIENDE A LA CLASE ARRAYLIST (DE JAVA) https://www.youtube.com/watch?v=Vsf5LfT1-5U chekea este vide
+    * si tienes dudas */
 public class Wordadapter extends ArrayAdapter<Word> {
-
+    /*CONSTRUCTOR DE EL ADAPTADOR , RECIBE CONTEXTO , ARRAYLIST PALABRA Y EL COLOR */
     private int mcolorRefactor ;
+
     public Wordadapter(Activity context, ArrayList<Word> palabra, int colorRefactor) {
 
         super(context, 0, palabra);
          mcolorRefactor = colorRefactor;
 
     }
+        /* OVERRIDE AL METODO GETVIEW DE ARRAY LIST <WORD> ACA TE PIDE UN RETURN QUE ES EL VIEW */
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Check if the existing view is being reused, otherwise inflate the view
+
         View listItemView = convertView;
         if(listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.formato, parent, false);
         }
-
-        // Get the {@link AndroidFlavor} object located at this position in the list
+ /* ACA SE SE VE LA POSICION DE CADA OBJETO EN EL ARRAY LIST Y SE HACE UN SET*/
         final Word currentword = getItem(position);
-
-        // Find the TextView in the list_item.xml layout with the ID version_name
+ /* EL VIEW DE LA PALABRA ESPAÑOL*/
         TextView miwoktxt = (TextView) listItemView.findViewById(R.id.version_name);
-        // Get the version name from the current AndroidFlavor object and
-        // set this text on the name TextView
+ /* SET TEXT DE LA PALABRA EN ESPANOL*/
         miwoktxt.setText(currentword.Getfrench());
-
-        // Find the TextView in the list_item.xml layout with the ID version_number
+ /*EL VIEW DE LA PALBRA EN INGLES */
         TextView numberTextView = (TextView) listItemView.findViewById(R.id.version_number);
-        // Get the version number from the current AndroidFlavor object and
-        // set this text on the number TextView
-        numberTextView.setText(currentword.Getingle());
-        ImageView iconView = (ImageView) listItemView.findViewById(R.id.imagen);
-        // Get the image resource ID from the current AndroidFlavor object and
-        // set the image to iconView
-       ImageView boton = (ImageView) listItemView.findViewById(R.id.floatingActionButton) ;
 
+        numberTextView.setText(currentword.Getingle());
+         /* EL VIEW DE LA IMAGEN*/
+        ImageView iconView = (ImageView) listItemView.findViewById(R.id.imagen);
+ /* EL VIEW DEL BOTON*/
+       ImageView boton = (ImageView) listItemView.findViewById(R.id.floatingActionButton) ;
+ /*ACA SET ON CLICK LISTENER PARA EL BOTON  */
        boton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -67,7 +66,7 @@ public class Wordadapter extends ArrayAdapter<Word> {
 
 
 
-
+ /*ACA SI NO TIENE IMAGEN SIMPLEMENTE HACE LA VISIVILIDAD DEL ICONVIEW NULA , Y SI NO ES ASI AGARRA LA IMAGEN Y LA PONE  */
         if ( currentword.notimage() ){
 
         iconView.setImageResource(currentword.getImagenresource());
@@ -76,6 +75,7 @@ public class Wordadapter extends ArrayAdapter<Word> {
         else{
        iconView.setVisibility(View.GONE);
    }
+   /*SI LA IMAGEN EXISTE TAMBIEN LE PONE UN BACKGROUND DIFERENTE  */
            View textcontainer = listItemView.findViewById(R.id.madre) ;
            int color = ContextCompat.getColor(getContext() , mcolorRefactor) ;
            View textcontainer2 = listItemView.findViewById(R.id.madre2) ;
@@ -83,7 +83,7 @@ public class Wordadapter extends ArrayAdapter<Word> {
              textcontainer2.setBackgroundColor(color);
 
 
-        // Return the whole list item layout (containing 2 TextViews and an ImageView)
+        // RETORNO EL LIST ITEM (CONTIENE LOS DOS TEXTOS Y LA IMAGEN )
         // so that it can be shown in the ListView
         return listItemView;
     }
